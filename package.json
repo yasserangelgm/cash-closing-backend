@@ -1,0 +1,23 @@
+{
+  "name": "cash-closing-backend",
+  "version": "1.0.0",
+  "description": "API for icome and expense control application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yasserangelgm/cash-closing-backend.git"
+  },
+  "keywords": [
+    "income",
+    "outcome"
+  ],
+  "author": "Yasser Angel Godinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yasserangelgm/cash-closing-backend/issues"
+  },
+  "homepage": "https://github.com/yasserangelgm/cash-closing-backend#readme"
+}
