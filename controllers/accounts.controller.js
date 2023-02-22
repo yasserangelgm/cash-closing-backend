@@ -1,7 +1,6 @@
 const Account = require('../models/account.model');
 const Transaction = require('../models/transaction.model');
 const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcrypt');
 
 /* 
 @desc Get all accounts

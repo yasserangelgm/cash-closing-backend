@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema(
   {
-    type: {
+    transactiontype: {
       type: String,
       required: true,
       enum: ['Expense', 'Income', 'Transfer'],
@@ -10,7 +10,6 @@ const transactionSchema = new mongoose.Schema(
     },
     from: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: 'Account',
     },
     to: {
