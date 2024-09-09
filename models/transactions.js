@@ -66,13 +66,13 @@ async function deleteTransactionById(id) {
 // Editar una transacción por ID
 async function updateTransactionById(id, transactionData) {
   const {
-    userId,
+    user_id,
     amount,
     type,
     category,
     description,
-    transactionDate,
-    receiptUrl,
+    transaction_date,
+    receipt_url,
   } = transactionData;
 
   const query = `UPDATE transactions
@@ -80,13 +80,13 @@ async function updateTransactionById(id, transactionData) {
                  WHERE id = $8`;
   try {
     const result = await pool.query(query, [
-      userId,
+      user_id,
       amount,
       type,
       category,
       description,
-      transactionDate,
-      receiptUrl,
+      transaction_date,
+      receipt_url,
       id,
     ]);
 
