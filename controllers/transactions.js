@@ -54,6 +54,7 @@ async function getRecent(req, res) {
 // Eliminar una transaccion por id
 async function eliminate(req, res) {
   const { id } = req.params;
+
   try {
     const deletedTransaction = await Transaction.deleteTransactionById(id);
     res.status(200).json({
@@ -84,10 +85,47 @@ async function update(req, res) {
     res.status(500).json({ error: "Error al actualizar la transacción" });
   }
 }
+
+async function getById(req, res) {
+  try {
+    const id = parseInt(req.params.id);
+
+    const transaction = await Transaction.getTransactionById(id);
+    res.status(200).json(transaction);
+  } catch (error) {
+    console.error("Error al obtener la transaccion:", error);
+    res.status(500).json({ error: "Error al obtener la transaccion" });
+  }
+}
+
+async function filterByDates(req, res) {
+  console.log("Query: ", req.query);
+  try {
+    const { startDate, endDate } = req.query;
+
+    if (!startDate || !endDate) {
+      return res
+        .status(400)
+        .json({ message: "Se requieren fechas de inicio y fin" });
+    }
+
+    const transaction = await Transaction.getTransactionByDateRange(
+      startDate,
+      endDate
+    );
+    res.status(200).json(transaction);
+  } catch (error) {
+    console.error("Error al filtrar las transacciones:", error);
+    res.status(500).json({ error: "Error al filtrar las transacciones" });
+  }
+}
+
 module.exports = {
   create,
   getAll,
   getRecent,
   eliminate,
   update,
+  getById,
+  filterByDates,
 };

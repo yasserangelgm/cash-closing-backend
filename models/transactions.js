@@ -96,10 +96,40 @@ async function updateTransactionById(id, transactionData) {
   }
 }
 
+// Obtener una transacción por ID
+/* async function getTransactionById(id) {
+  try {
+    const result = await pool.query(
+      `SELECT * FROM transactions WHERE id = $1`,
+      [id]
+    );
+    return result.rows[0];
+  } catch (error) {
+    throw error;
+  }
+} */
+
+// Obtener un conjunto de transacciones entre dos fechas dadas
+async function getTransactionByDateRange(startDate, endDate) {
+  console.log("AAAAAAAAAAAAAAAAAAAAA");
+
+  try {
+    const result = await pool.query(
+      `SELECT * FROM transactions WHERE transaction_date >= $1 AND transaction_date <= $2`,
+      [startDate, endDate]
+    );
+    return result.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   createTransaction,
   getAllTransactions,
   getRecentTransactions,
   deleteTransactionById,
   updateTransactionById,
+  /*  getTransactionById, */
+  getTransactionByDateRange,
 };
