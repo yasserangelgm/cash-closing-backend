@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 const { Pool } = require("pg");
 
 dotenv.config();
@@ -14,6 +15,7 @@ const reportsRouter = require("./routes/reports");
 const authRouter = require("./routes/auth");
 
 // Middleware para manejar JSON
+app.use(cookieParser());
 app.use(express.json());
 app.use("/transactions", transactionsRouter);
 app.use("/users", usersRouter);

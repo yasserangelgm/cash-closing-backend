@@ -26,6 +26,8 @@ async function login(req, res) {
       process.env.JWT_SECRET, // Usa una variable de entorno para la clave secreta
       { expiresIn: "1h" }
     );
+    console.log(token);
+
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Solo HTTPS en producción
